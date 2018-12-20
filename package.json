@@ -5,6 +5,7 @@
   "main": "dist/SmartBool.cjs.js",
   "module": "dist/SmartBool.esm.js",
   "browser": "dist/SmartBool.umd.js",
+  "types": "dist/index.d.ts",
   "publishConfig": {
     "access": "public"
   },
