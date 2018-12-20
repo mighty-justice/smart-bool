@@ -1,1 +1,1 @@
-export { default as SmartBool } from './SmartBool.ts';
+export { default as SmartBool } from './SmartBool';
