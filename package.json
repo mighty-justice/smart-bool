@@ -15,7 +15,7 @@
     "build": "npm run build:types && npm run build:js",
     "dev": "rollup -c -w",
     "lint": "tslint src/*.tsx?",
-    "test": "jest test/*.js",
+    "test": "jest",
     "test:watch": "npm run test/*.js -- -w",
     "prebuild": "npm run lint",
     "predeploy": "npm run build && npm run docs:build",
@@ -43,6 +43,7 @@
   },
   "homepage": "https://mighty-justice.github.io/smart-bool/",
   "jest": {
+    "testPathIgnorePatterns": ["/_book/", "/node_modules/"],
     "transform": {
       "^.+\\.(js|jsx|ts|tsx)$": "babel-jest"
     },
