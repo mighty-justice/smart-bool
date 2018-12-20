@@ -26,7 +26,7 @@ saving(label: string) // Returns label is false, 'Saving...' if true. Useful for
 
 ### Usage
 
-```typescript jsx
+```jsx
 import React, { Component } from 'react';
 import axios from 'axios';
 import { observer } from 'mobx-react';
