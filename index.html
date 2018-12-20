@@ -1,0 +1,274 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Introduction · SmartBool documentation</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="smart-bool">
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter active" data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Introduction</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="smartbool">SmartBool</h1>
+<p><a href="https://www.npmjs.com/package/@mighty-justice/smart-bool" target="_blank"><img src="https://img.shields.io/npm/v/@mighty-justice/smart-bool.svg" alt="npm Version"></a> <a href="https://travis-ci.org/mighty-justice/smart-bool" target="_blank"><img src="https://travis-ci.org/mighty-justice/smart-bool.svg?branch=master" alt="Build Status"></a> <a href="https://coveralls.io/github/mighty-justice/smart-bool?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/mighty-justice/smart-bool/badge.svg?branch=master" alt="Coverage Status"></a></p>
+<h2 id="installation">Installation</h2>
+<h4 id="dependencies">dependencies</h4>
+<pre><code>&quot;mobx&quot;: &quot;&gt;=5.8&quot;
+</code></pre><h4 id="npm">npm</h4>
+<p><code>npm install --save-dev @mighty-justice/smart-bool</code></p>
+<h4 id="yarn">yarn</h4>
+<p><code>yarn add --dev @mighty-justice/smart-bool</code></p>
+<h3 id="helpers">Helpers</h3>
+<pre><code class="lang-ts"><span class="hljs-keyword">get</span> isTrue <span class="hljs-comment">// Value</span>
+<span class="hljs-keyword">set</span>(value: <span class="hljs-built_in">boolean</span>) <span class="hljs-comment">// Sets new value</span>
+setTrue() <span class="hljs-comment">// Sets value to true</span>
+setFalse() <span class="hljs-comment">// Sets value to false</span>
+toggle() <span class="hljs-comment">// Toggles value</span>
+until(promise) <span class="hljs-comment">// Waits for promise, then sets value to true and returns promise</span>
+saving(label: <span class="hljs-built_in">string</span>) <span class="hljs-comment">// Returns label is false, &apos;Saving...&apos; if true. Useful for buttons.</span>
+</code></pre>
+<h3 id="usage">Usage</h3>
+<p>```typescript jsx
+import React, { Component } from &apos;react&apos;;
+import axios from &apos;axios&apos;;
+import { observer } from &apos;mobx-react&apos;;
+import SmartBool from &apos;@mighty-justice/smart-bool&apos;;</p>
+<p>@observer
+class Autofac extends Component&lt;{}&gt; {
+  private isLoading = SmartBool(true);
+  private isMilkPizzled = SmartBool(); // Defaults to false</p>
+<p>  constructor (props: {}) {
+    super(props);
+    this.waitForTrain();
+  }</p>
+<p>  private async waitForTrain () {
+    //  this.isLoading.isTrue == true;
+    //  this.isMilkPizzled.isTrue == false;</p>
+<pre><code>// Sets bool to true until a promise returns.
+const request = axios.get(&apos;/train/&apos;);
+// this.isLoading.isTrue == true;
+const response = await this.isLoading.until(request);
+// this.isLoading.isTrue == false;
+
+// Simple setter
+this.isMilkPizzled.set(true);
+
+// Helper method useful for JSX props
+this.isMilkPizzled.setTrue();
+</code></pre><p>  }</p>
+<p>  public render () {
+    return (
+      <div>
+        <p>Waiting for train: {this.isLoading.isTrue}</p>
+        <p>Claiming is pizzled: {this.isMilkPizzled.isTrue}</p>
+      </div>
+    )
+  }
+}
+```</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-plus","anchorjs"],"styles":{"website":"style.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchorjs":{"icon":"#","placement":"left","visible":"always"},"theme-default":{"styles":{"website":"style.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"theme":"default","author":"smart-bool","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"SmartBool documentation","gitbook":"3.2.3"},"file":{"path":"README.md","mtime":"2018-12-19T22:36:36.071Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-20T15:33:43.492Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-anchorjs/anchor.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-anchorjs/anchor-style.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
