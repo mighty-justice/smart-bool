@@ -1,6 +1,6 @@
 {
   "name": "@mighty-justice/smart-bool",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Eliminate your single-line boolean setting methods",
   "main": "dist/SmartBool.cjs.js",
   "module": "dist/SmartBool.esm.js",
@@ -99,6 +99,5 @@
     "tslint": "^5.11.0",
     "typescript": "^3.2.2"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
