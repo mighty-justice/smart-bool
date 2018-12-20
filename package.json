@@ -10,7 +10,9 @@
   },
   "scripts": {
     "clean": "rm -r dist/*",
-    "build": "rollup -c",
+    "build:types": "yarn tsc --emitDeclarationOnly",
+    "build:js": "rollup -c",
+    "build": "npm run build:types && npm run build:js",
     "dev": "rollup -c -w",
     "lint": "tslint src/*.tsx?",
     "test": "jest test/*.js",
