@@ -99,6 +99,5 @@
     "typescript": "^3.2.2"
   },
   "dependencies": {
-    "gitbook-plugin-search-plus": "^1.0.4-alpha-3"
   }
 }

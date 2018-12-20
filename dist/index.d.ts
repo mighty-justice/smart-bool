@@ -1,1 +1,2 @@
-export { default as SmartBool } from './SmartBool';
+import { default as SmartBool } from './SmartBool';
+export default SmartBool;

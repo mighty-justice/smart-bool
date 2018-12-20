@@ -1,5 +1,5 @@
 /* global it, describe, expect */
-import { SmartBool } from '../src/';
+import SmartBool from '../src/';
 
 describe('SmartBool', () => {
   it('Sets boolean values', async () => {

@@ -1,7 +1,5 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', { value: true });
-
 var mobx = require('mobx');
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
@@ -554,4 +552,4 @@ function () {
   }
 })), _class2)) || _class;
 
-exports.SmartBool = SmartBool;
+module.exports = SmartBool;

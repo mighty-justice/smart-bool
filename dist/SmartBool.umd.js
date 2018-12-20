@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('mobx')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'mobx'], factory) :
-  (global = global || self, factory(global['smart-bool'] = {}, global.mobx));
-}(this, function (exports, mobx) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('mobx')) :
+  typeof define === 'function' && define.amd ? define(['mobx'], factory) :
+  (global = global || self, global['smart-bool'] = factory(global.mobx));
+}(this, function (mobx) { 'use strict';
 
   function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
     try {
@@ -554,8 +554,6 @@
     }
   })), _class2)) || _class;
 
-  exports.SmartBool = SmartBool;
-
-  Object.defineProperty(exports, '__esModule', { value: true });
+  return SmartBool;
 
 }));

@@ -550,4 +550,4 @@ function () {
   }
 })), _class2)) || _class;
 
-export { SmartBool };
+export default SmartBool;
