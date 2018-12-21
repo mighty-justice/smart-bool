@@ -101,6 +101,5 @@
   },
   "dependencies": {
     "class-autobind-decorator": "^3.0.1",
-    "gitbook-plugin-search-plus": "^1.0.3"
   }
 }
