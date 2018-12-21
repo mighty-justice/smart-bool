@@ -2,33 +2,15 @@ import autoBindMethods from 'class-autobind-decorator';
 import { observable } from 'mobx';
 
 /*
-  Simple class for controlling a boolean, eliminating a lot of
-  repetitive single-line functions in our code-base.
-
-  Future additions which may be useful:
-
-  get isFalse () {
-    return !this.isTrue;
-  }
-*/
-
-/*
   Name: SmartBool
   Description: Simple class for controlling a boolean, eliminating repetitive single-line setter functions.
 */
-
-/**
- * SmartBool
- *
- * @param {boolean} initial
- * @returns {SmartBool}
- */
 
 @autoBindMethods
 class SmartBool {
   @observable public isTrue = false;
 
-  constructor (initial = false) {
+  public constructor (initial = false) {
     this.isTrue = initial;
   }
 

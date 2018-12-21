@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('mobx')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'mobx'], factory) :
-  (global = global || self, factory(global['smart-bool'] = {}, global.mobx));
-}(this, function (exports, mobx) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('mobx')) :
+  typeof define === 'function' && define.amd ? define(['mobx'], factory) :
+  (global = global || self, global['smart-bool'] = factory(global.mobx));
+}(this, function (mobx) { 'use strict';
 
   function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
     try {
@@ -420,27 +420,9 @@
 
   var _class, _class2, _descriptor, _temp;
   /*
-    Simple class for controlling a boolean, eliminating a lot of
-    repetitive single-line functions in our code-base.
-
-    Future additions which may be useful:
-
-    get isFalse () {
-      return !this.isTrue;
-    }
-  */
-
-  /*
     Name: SmartBool
     Description: Simple class for controlling a boolean, eliminating repetitive single-line setter functions.
   */
-
-  /**
-   * SmartBool
-   *
-   * @param {boolean} initial
-   * @returns {SmartBool}
-   */
 
   var SmartBool = autoBindMethods(_class = (_class2 = (_temp =
   /*#__PURE__*/
@@ -554,8 +536,6 @@
     }
   })), _class2)) || _class;
 
-  exports.SmartBool = SmartBool;
-
-  Object.defineProperty(exports, '__esModule', { value: true });
+  return SmartBool;
 
 }));
