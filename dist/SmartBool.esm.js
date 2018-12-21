@@ -416,27 +416,9 @@ var autoBindMethods = unwrapExports(build);
 
 var _class, _class2, _descriptor, _temp;
 /*
-  Simple class for controlling a boolean, eliminating a lot of
-  repetitive single-line functions in our code-base.
-
-  Future additions which may be useful:
-
-  get isFalse () {
-    return !this.isTrue;
-  }
-*/
-
-/*
   Name: SmartBool
   Description: Simple class for controlling a boolean, eliminating repetitive single-line setter functions.
 */
-
-/**
- * SmartBool
- *
- * @param {boolean} initial
- * @returns {SmartBool}
- */
 
 var SmartBool = autoBindMethods(_class = (_class2 = (_temp =
 /*#__PURE__*/

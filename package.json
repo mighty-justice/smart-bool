@@ -15,7 +15,7 @@
     "build:js": "rollup -c",
     "build": "npm run build:types && npm run build:js",
     "dev": "rollup -c -w",
-    "lint": "tslint src/*.tsx?",
+    "lint": "tslint --project .",
     "test": "jest",
     "test:watch": "npm run test/*.js -- -w",
     "prebuild": "npm run lint",
@@ -37,7 +37,7 @@
     "mobx",
     "utils"
   ],
-  "author": "Robert Kuykendall <robert@mighty.com>",
+  "author": "Mighty",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mighty-justice/smart-bool/issues"
@@ -79,8 +79,8 @@
     "@babel/polyfill": "^7.2.3",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-typescript": "^7.1.0",
+    "@mighty-justice/tslint-config": "^0.3.0",
     "babelrc-rollup": "^3.0.0",
-    "class-autobind-decorator": "^3.0.1",
     "coveralls": "^3.0.2",
     "gh-pages": "^2.0.1",
     "gitbook-cli": "^2.3.2",
@@ -99,5 +99,8 @@
     "tslint": "^5.11.0",
     "typescript": "^3.2.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "class-autobind-decorator": "^3.0.1",
+    "gitbook-plugin-search-plus": "^1.0.3"
+  }
 }

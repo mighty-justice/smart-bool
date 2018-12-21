@@ -4,9 +4,6 @@
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
-    "inlineSourceMap": false,
-    "inlineSources": false,
-    "jsx": "preserve",
     "lib": [
       "dom",
       "es5",

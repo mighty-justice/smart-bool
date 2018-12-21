@@ -1,9 +1,3 @@
-/**
- * SmartBool
- *
- * @param {boolean} initial
- * @returns {SmartBool}
- */
 declare class SmartBool {
     isTrue: boolean;
     constructor(initial?: boolean);
