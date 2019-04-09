@@ -70,7 +70,7 @@ function _initializerDefineProperty(target, property, descriptor, context) {
 
 function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
   var desc = {};
-  Object['ke' + 'ys'](descriptor).forEach(function (key) {
+  Object.keys(descriptor).forEach(function (key) {
     desc[key] = descriptor[key];
   });
   desc.enumerable = !!desc.enumerable;
@@ -90,17 +90,17 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
   }
 
   if (desc.initializer === void 0) {
-    Object['define' + 'Property'](target, property, desc);
+    Object.defineProperty(target, property, desc);
     desc = null;
   }
 
   return desc;
 }
 
-var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
 function unwrapExports (x) {
-	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x.default : x;
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
 }
 
 function createCommonjsModule(fn, module) {
