@@ -1,68 +1,63 @@
-import autoBindMethods from 'class-autobind-decorator';
-import { observable } from 'mobx';
+import { flow, types } from 'mobx-state-tree';
 
 /*
   Name: SmartBool
   Description: Simple class for controlling a boolean, eliminating repetitive single-line setter functions.
 */
 
-@autoBindMethods
-class SmartBool {
-  @observable public isTrue = false;
+const SmartBool = types
+  .model({
+    isTrue: false,
+  })
+  .views(self => ({
+    get isFalse () {
+      return !self.isTrue;
+    },
 
-  public constructor (initial = false) {
-    this.isTrue = initial;
-  }
+     _stringIfTrueElse (ifTrue: string, ifFalse: string) {
+      return self.isTrue ? ifTrue : ifFalse;
+    },
 
-  public get isFalse () {
-    return !this.isTrue;
-  }
+    // Usage:
+    // <Button>{this.isSubmitting.saving()}</Button>
+    // <Button>{this.isSubmitting.saving('Update')}</Button>
+    saving (label: string = 'Save') {
+      return this._stringIfTrueElse('Saving...', label);
+    },
+  }))
+  .actions(self => {
+    const set = (value: boolean) => {
+      self.isTrue = value;
+      return self.isTrue;
+    };
 
-  public set (value: boolean) {
-    this.isTrue = value;
-    return this.isTrue;
-  }
+    const setTrue = () => set(true);
 
-  public setTrue () {
-    return this.set(true);
-  }
+    const setFalse = () => set(false);
 
-  public setFalse () {
-    return this.set(false);
-  }
+    const toggle = () => {
+      self.isTrue = !self.isTrue;
+      return self.isTrue;
+    };
 
-  public toggle () {
-    this.isTrue = !this.isTrue;
-    return this.isTrue;
-  }
+    // Will set boolean to true until request completes.
+    // Usage:
+    // const request = client.retrieve(id);
+    // await isLoading.until(request);
+    const until = flow(function* (request: Promise<any>) {
+      set(true);
+      const response = yield request;
+      set(false);
+      return response;
+    });
 
-  // Will set boolean to true until request completes.
-  // Usage:
-  // const request = client.retrieve(id);
-  // await this.isLoading.until(request);
-  public async until (request: Promise<any>) {
-    this.set(true);
-    try {
-      return (await request);
-    }
-    catch (err) {
-      throw err;
-    }
-    finally {
-      this.set(false);
-    }
-  }
-
-  private _stringIfTrueElse (ifTrue: string, ifFalse: string) {
-    return this.isTrue ? ifTrue : ifFalse;
-  }
-
-  // Usage:
-  // <Button>{this.isSubmitting.saving()}</Button>
-  // <Button>{this.isSubmitting.saving('Update')}</Button>
-  public saving (label: string = 'Save') {
-    return this._stringIfTrueElse('Saving...', label);
-  }
-}
+    return {
+      set,
+      setFalse,
+      setTrue,
+      toggle,
+      until,
+    };
+  });
 
 export default SmartBool;
