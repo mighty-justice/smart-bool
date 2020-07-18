@@ -41,7 +41,8 @@ export default [
     ],
     external: [
       'ms',
-      'mobx',
+      ...Object.keys(pkg.dependencies || {}),
+      ...Object.keys(pkg.peerDependencies || {}),
     ],
     plugins: [
       resolve({ extensions }),

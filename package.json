@@ -1,6 +1,6 @@
 {
   "name": "@mighty-justice/smart-bool",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Eliminate your single-line boolean setting methods",
   "main": "dist/SmartBool.cjs.js",
   "module": "dist/SmartBool.esm.js",
@@ -79,6 +79,7 @@
     "@babel/plugin-proposal-decorators": "^7.4.0",
     "@babel/plugin-proposal-export-default-from": "^7.2.0",
     "@babel/plugin-proposal-optional-chaining": "^7.2.0",
+    "@babel/polyfill": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-typescript": "^7.3.3",
     "@mighty-justice/tslint-config": "^0.3.0",
@@ -102,7 +103,6 @@
     "typescript": "^3.4.2"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.6.0",
     "class-autobind-decorator": "^3.0.1",
     "gitbook-plugin-search-plus": "^1.0.3"
   }
