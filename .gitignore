@@ -7,9 +7,9 @@
 
 # User Interface distribution / packaging
 **/node_modules/
+coverage
 
 # Other
-_book
 .cache
 source.html
 *.log

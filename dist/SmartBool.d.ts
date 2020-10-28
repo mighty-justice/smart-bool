@@ -1,7 +1,7 @@
 declare class SmartBool {
     isTrue: boolean;
     constructor(initial?: boolean);
-    readonly isFalse: boolean;
+    get isFalse(): boolean;
     set(value: boolean): boolean;
     setTrue(): boolean;
     setFalse(): boolean;

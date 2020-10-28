@@ -1,3 +1,4 @@
+import { __decorate } from 'tslib';
 import autoBindMethods from 'class-autobind-decorator';
 import { observable } from 'mobx';
 
@@ -6,42 +7,41 @@ import { observable } from 'mobx';
   Description: Simple class for controlling a boolean, eliminating repetitive single-line setter functions.
 */
 
-@autoBindMethods
-class SmartBool {
-  @observable public isTrue = false;
-
-  public constructor(initial = false) {
+let SmartBool = class SmartBool {
+  constructor(initial = false) {
+    this.isTrue = false;
     this.isTrue = initial;
   }
 
-  public get isFalse() {
+  get isFalse() {
     return !this.isTrue;
   }
 
-  public set(value: boolean) {
+  set(value) {
     this.isTrue = value;
     return this.isTrue;
   }
 
-  public setTrue() {
+  setTrue() {
     return this.set(true);
   }
 
-  public setFalse() {
+  setFalse() {
     return this.set(false);
   }
 
-  public toggle() {
+  toggle() {
     this.isTrue = !this.isTrue;
     return this.isTrue;
-  }
-
-  // Will set boolean to true until request completes.
+  } // Will set boolean to true until request completes.
   // Usage:
   // const request = client.retrieve(id);
   // await this.isLoading.until(request);
-  public async until(request: Promise<any>) {
+
+
+  async until(request) {
     this.set(true);
+
     try {
       return await request;
     } catch (err) {
@@ -51,16 +51,23 @@ class SmartBool {
     }
   }
 
-  private _stringIfTrueElse(ifTrue: string, ifFalse: string) {
+  _stringIfTrueElse(ifTrue, ifFalse) {
     return this.isTrue ? ifTrue : ifFalse;
-  }
-
-  // Usage:
+  } // Usage:
   // <Button>{this.isSubmitting.saving()}</Button>
   // <Button>{this.isSubmitting.saving('Update')}</Button>
-  public saving(label: string = 'Save') {
+
+
+  saving(label = 'Save') {
     return this._stringIfTrueElse('Saving...', label);
   }
-}
 
-export default SmartBool;
+};
+
+__decorate([observable], SmartBool.prototype, "isTrue", void 0);
+
+SmartBool = /*#__PURE__*/__decorate([autoBindMethods], SmartBool);
+var SmartBool$1 = SmartBool;
+
+export default SmartBool$1;
+//# sourceMappingURL=smart-bool.esm.js.map
