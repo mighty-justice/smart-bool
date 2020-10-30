@@ -1,4 +1,3 @@
-/* global it, describe, expect */
 import SmartBool from '../src/';
 
 describe('SmartBool', () => {
@@ -55,10 +54,9 @@ describe('SmartBool', () => {
 
     expect(sb.isTrue).toBe(false);
     try {
-      const request = new Promise((resolve, reject) => setTimeout(reject, 10));
+      const request = new Promise((_resolve, reject) => setTimeout(reject, 10));
       await sb.until(request);
-    }
-    catch (err) {
+    } catch (err) {
       // Do nothing
     }
     expect(sb.isTrue).toBe(false);

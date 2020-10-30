@@ -2,36 +2,33 @@
   "name": "@mighty-justice/smart-bool",
   "version": "1.0.0",
   "description": "Eliminate your single-line boolean setting methods",
-  "main": "dist/SmartBool.cjs.js",
+  "main": "dist/index.js",
   "module": "dist/SmartBool.esm.js",
-  "browser": "dist/SmartBool.umd.js",
+  "typings": "dist/index.d.ts",
   "types": "dist/index.d.ts",
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "build": "npm run build:clean && npm run build:types && npm run build:js",
-    "build:clean": "rm -r dist/* || true",
-    "build:js": "rollup -c",
-    "build:types": "tsc --emitDeclarationOnly",
+    "analyze": "source-map-explorer 'dist/*.js'",
+    "build": "tsdx build",
     "deploy": "np",
     "dev": "rollup -c -w",
-    "docs:build": "npm run docs:prepare && gitbook build",
-    "docs:deploy": "gh-pages -d _book",
-    "docs:prepare": "gitbook install",
-    "docs:watch": "npm run docs:prepare && gitbook serve",
-    "lint": "tslint --project .",
-    "postpublish": "npm run docs:build && npm run docs:deploy",
+    "format": "tsdx lint --fix",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
     "preversion": "npm run lint",
-    "test": "jest",
-    "test:watch": "npm run test/*.js -- -w",
-    "version": "npm run build && git add dist",
-    "view-source-map": "source-map-explorer --html dist/index.js dist/index.map > source.html && open source.html"
+    "start": "tsdx watch",
+    "test": "tsdx test",
+    "version": "npm run build && git add dist"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mighty-justice/smart-bool.git"
   },
+  "browserslist": [
+    "> 5%"
+  ],
   "keywords": [
     "javascript",
     "typescript",
@@ -44,24 +41,22 @@
     "url": "https://github.com/mighty-justice/smart-bool/issues"
   },
   "homepage": "https://mighty-justice.github.io/smart-bool/",
+  "prettier": {
+    "printWidth": 120,
+    "proseWrap": "always",
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
   "jest": {
-    "testPathIgnorePatterns": [
-      "/_book/",
-      "/node_modules/"
-    ],
-    "transform": {
-      "^.+\\.(js|jsx|ts|tsx)$": "babel-jest"
-    },
-    "moduleFileExtensions": [
-      "js",
-      "jsx",
-      "ts",
-      "tsx"
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.tsx",
+      "src/**/*.ts"
     ],
     "setupFilesAfterEnv": [
-      "./test/setup.js"
-    ],
-    "testURL": "http://localhost/"
+      "./test/setup.ts"
+    ]
   },
   "files": [
     "dist",
@@ -70,39 +65,15 @@
   "peerDependencies": {
     "mobx": "^4.0.0 || ^5.0.0"
   },
-  "resolutions": {
-    "babel-core": "7.0.0-bridge.0"
-  },
   "devDependencies": {
-    "@babel/core": "^7.4.3",
-    "@babel/plugin-proposal-class-properties": "^7.4.0",
-    "@babel/plugin-proposal-decorators": "^7.4.0",
-    "@babel/plugin-proposal-export-default-from": "^7.2.0",
-    "@babel/plugin-proposal-optional-chaining": "^7.2.0",
-    "@babel/polyfill": "^7.4.3",
-    "@babel/preset-env": "^7.4.3",
-    "@babel/preset-typescript": "^7.3.3",
-    "@mighty-justice/tslint-config": "^0.3.0",
-    "babelrc-rollup": "^3.0.0",
-    "coveralls": "^3.0.3",
-    "gh-pages": "^2.0.1",
-    "gitbook-cli": "^2.3.2",
-    "gitbook-plugin-anchorjs": "^2.1.0",
-    "gitbook-plugin-search-plus": "^1.0.4-alpha-3",
-    "jest": "^24.7.1",
-    "jest-environment-jsdom": "^24.7.1",
-    "mobx": "^5.9.4",
-    "np": "^4.0.2",
-    "regenerator-runtime": "^0.13.2",
-    "rollup": "^1.9.0",
-    "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-commonjs": "^9.3.4",
-    "rollup-plugin-node-resolve": "^4.2.1",
-    "source-map-explorer": "^1.8.0",
-    "tslint": "^5.15.0",
-    "typescript": "^3.4.2"
+    "coveralls": "^3",
+    "mobx": "^5",
+    "np": "^4",
+    "source-map-explorer": "^2.5.0",
+    "tsdx": "^0",
+    "typescript": "^3"
   },
   "dependencies": {
-    "class-autobind-decorator": "^3.0.1"
+    "class-autobind-decorator": "^3"
   }
 }
