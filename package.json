@@ -26,9 +26,6 @@
     "type": "git",
     "url": "git+https://github.com/mighty-justice/smart-bool.git"
   },
-  "browserslist": [
-    "> 5%"
-  ],
   "keywords": [
     "javascript",
     "typescript",
