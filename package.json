@@ -3,7 +3,7 @@
   "version": "2.0.1",
   "description": "Eliminate your single-line boolean setting methods",
   "main": "dist/index.js",
-  "module": "dist/SmartBool.esm.js",
+  "module": "dist/smart-bool.esm.js",
   "typings": "dist/index.d.ts",
   "types": "dist/index.d.ts",
   "publishConfig": {
