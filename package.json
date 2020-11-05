@@ -1,6 +1,6 @@
 {
   "name": "@mighty-justice/smart-bool",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Eliminate your single-line boolean setting methods",
   "main": "dist/index.js",
   "module": "dist/smart-bool.esm.js",
